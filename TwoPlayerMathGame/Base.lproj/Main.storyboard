@@ -133,10 +133,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YuY-8X-AKa">
+                                <rect key="frame" x="131" y="592" width="112" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.18388065203999826" green="1" blue="0.049058402499094989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="answerCheckLabel" destination="YuY-8X-AKa" id="eFh-0M-qkX"/>
                         <outlet property="answerLabel" destination="tRH-9U-4cN" id="WAE-yt-QTq"/>
                         <outlet property="player1Score" destination="0WQ-Gb-iKf" id="06u-RW-3zB"/>
                         <outlet property="player2Score" destination="7ch-GZ-Yeh" id="ccy-UE-y2S"/>

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *player2Score;
 @property (nonatomic, strong) GameModel *model;
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *answerCheckLabel;
 @property (nonatomic, assign) NSInteger currentAnswer;
 @end
 
@@ -29,6 +30,7 @@
     self.player1Score.text = [self.model getLife:0];
     self.player2Score.text = [self.model getLife:1];
     self.answerLabel.text = [NSString stringWithFormat:@"%ld", (long)_currentAnswer];
+    self.answerCheckLabel.text = @"";
 }
 
 
@@ -38,17 +40,22 @@
 }
 
 - (IBAction)submitAnswer:(UIButton *)sender {
-    [self.model checkAnswer:self.currentAnswer];
+    BOOL answerCorrect = [self.model checkAnswer:self.currentAnswer];
+    [self updateAnswerStatusLabel:answerCorrect];
     self.player1Score.text = [self.model getLife:0];
     self.player2Score.text = [self.model getLife:1];
     
     if (self.model.gameOver)
     {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Two Player Math Game" message:@"Game Over!!" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-            NSLog(@"You pressed button OK");
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Game over!" message:@"Restart Game?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            NSLog(@"You pressed button Yes");
         }];
-        [alert addAction:defaultAction];
+        UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            NSLog(@"You pressed button No");
+        }];
+        [alert addAction:yesAction];
+        [alert addAction:noAction];
         
         [self presentViewController:alert animated:YES completion:nil];
         
@@ -62,6 +69,19 @@
 }
 -(void)addDigit:(NSInteger)digit{
     self.currentAnswer = (self.currentAnswer * 10) + digit;
+}
+
+-(void)updateAnswerStatusLabel:(BOOL)correct{
+    if (correct)
+    {
+        self.answerCheckLabel.text = @"Correct!";
+        self.answerCheckLabel.textColor = UIColor.greenColor;
+    }
+    else
+    {
+        self.answerCheckLabel.text = @"Wrong!";
+        self.answerCheckLabel.textColor = UIColor.redColor;
+    }
 }
 
 -(void)updateAnswerLabel{
