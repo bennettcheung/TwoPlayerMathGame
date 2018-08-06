@@ -24,6 +24,7 @@
         _playersArray = @[[Player new],
                           [Player new]];
         _currentPlayer = 0;
+        _gameOver = NO;
         _question = [[AdditionQuestion alloc] init];
         [_question generateQuestion];
     }
@@ -40,16 +41,43 @@
         self.currentPlayer = 1;
     else
         self.currentPlayer = 0;
+    [self.question generateQuestion];
 }
 
 -(BOOL)checkAnswer:(NSInteger)answer{
+    BOOL returnValue;
+    
+    Player *player= self.playersArray[self.currentPlayer];
     if (self.question.answer == answer)
-        return YES;
-    return NO;
+    {
+        returnValue = YES;
+    }
+    else{
+        player.life--;
+        returnValue = NO;
+    }
+    
+    if (player.life == 0)
+        self.gameOver = YES;
+    
+    return returnValue;
 }
 
--(NSInteger)getScore{
-    Player *player= self.playersArray[self.currentPlayer];
-    return player.score;
+-(NSString*)getLife:(NSInteger)playerNumber{
+    
+    if (playerNumber >=0 && playerNumber <[self.playersArray count])
+    {
+        Player *player= self.playersArray[playerNumber];
+        return [NSString stringWithFormat:@"Player %li: %ld", playerNumber +1, player.life];
+    }
+    else
+        return @"0";
 }
+
+-(void)resetGame{
+    self.gameOver = NO;
+    _currentPlayer = 0;
+    [self.question generateQuestion];
+}
+
 @end

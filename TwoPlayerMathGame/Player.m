@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        _score = 0;
+        _life = 3;
     }
     return self;
 }

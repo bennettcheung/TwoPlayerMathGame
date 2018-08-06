@@ -18,7 +18,9 @@
 }
 
 - (void)generateQuestion{
-    super.question = [NSString stringWithFormat:@"%lu + %lu", super.leftValue, super.rightValue];
+    self.leftValue = arc4random_uniform(21) + 1;
+    self.rightValue = arc4random_uniform(21) + 1;
+    super.question = [NSString stringWithFormat:@"%lu + %lu?", super.leftValue, super.rightValue];
     super.answer = super.leftValue + super.rightValue;
 }
 @end

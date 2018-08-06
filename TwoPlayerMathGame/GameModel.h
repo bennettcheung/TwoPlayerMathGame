@@ -13,7 +13,10 @@
 
 @property (nonatomic, strong) NSArray *playersArray;
 @property (nonatomic, assign) NSInteger currentPlayer;
+@property (nonatomic, assign) BOOL gameOver;
 
 -(NSString*)getQuestion;
 -(BOOL)checkAnswer:(NSInteger)answer;
+-(void)changePlayer;
+-(NSString*)getLife:(NSInteger)playerNumber;
 @end

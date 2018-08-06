@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Player : NSObject
-@property (nonatomic, assign) NSInteger score;
+@property (nonatomic, assign) NSInteger life;
 
 @end
