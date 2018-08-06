@@ -1,14 +1,14 @@
 //
-//  AdditionQuestion.m
+//  SubtractionQuestion.m
 //  TwoPlayerMathGame
 //
 //  Created by Bennett on 2018-08-06.
 //  Copyright © 2018 Bennett. All rights reserved.
 //
 
-#import "AdditionQuestion.h"
+#import "SubtractionQuestion.h"
 
-@implementation AdditionQuestion
+@implementation SubtractionQuestion
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -16,10 +16,9 @@
     }
     return self;
 }
-
 - (void)generateQuestion{
     [super generateQuestion];
-    super.question = [NSString stringWithFormat:@"%lu + %lu?", super.leftValue, super.rightValue];
-    super.answer = super.leftValue + super.rightValue;
+    super.question = [NSString stringWithFormat:@"%lu - %lu?", super.leftValue, super.rightValue];
+    super.answer = super.leftValue - super.rightValue;
 }
 @end

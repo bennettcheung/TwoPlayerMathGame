@@ -22,7 +22,8 @@
 }
 
 -(void)generateQuestion{
-    
+    _leftValue = arc4random_uniform(21) + 1;
+    _rightValue = arc4random_uniform(21) + 1;
 }
 
 - (NSInteger)answer {

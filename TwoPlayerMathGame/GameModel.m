@@ -7,11 +7,13 @@
 //
 
 #import "GameModel.h"
-#import "AdditionQuestion.h"
+#import "Question.h"
+#import "QuestionFactory.h"
 
 
 @interface GameModel()
-@property (nonatomic, strong) AdditionQuestion *question;
+@property (nonatomic, strong) Question *question;
+@property (nonatomic, strong) QuestionFactory *questionFactory;
 
 @end
 
@@ -25,8 +27,10 @@
                           [Player new]];
         _currentPlayer = 0;
         _gameOver = NO;
-        _question = [[AdditionQuestion alloc] init];
-        [_question generateQuestion];
+        
+        _questionFactory = [[QuestionFactory alloc] init];
+        _question = [_questionFactory generateRandomQuestion];
+        
     }
     return self;
 }
@@ -41,7 +45,7 @@
         self.currentPlayer = 1;
     else
         self.currentPlayer = 0;
-    [self.question generateQuestion];
+    self.question = [_questionFactory generateRandomQuestion];
 }
 
 -(BOOL)checkAnswer:(NSInteger)answer{
