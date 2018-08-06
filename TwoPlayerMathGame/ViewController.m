@@ -45,13 +45,21 @@
     self.player1Score.text = [self.model getLife:0];
     self.player2Score.text = [self.model getLife:1];
     
+    
     if (self.model.gameOver)
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Game over!" message:@"Restart Game?" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             NSLog(@"You pressed button Yes");
+            [self.model resetGame];
+            self.player1Score.text = [self.model getLife:0];
+            self.player2Score.text = [self.model getLife:1];
+            self.answerLabel.text = [NSString stringWithFormat:@"%d", 0];
+            self.answerCheckLabel.text = @"";
+            
         }];
         UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            
             NSLog(@"You pressed button No");
         }];
         [alert addAction:yesAction];
@@ -60,18 +68,19 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }
-    else{
-        self.currentAnswer =0;
-        [self updateAnswerLabel];
-        [self.model changePlayer];
-        self.questionUILabel.text = [self.model getQuestion];
-    }
+    
+    self.currentAnswer =0;
+    [self updateAnswerLabel];
+    [self.model changePlayer];
+    self.questionUILabel.text = [self.model getQuestion];
+    
 }
 -(void)addDigit:(NSInteger)digit{
     self.currentAnswer = (self.currentAnswer * 10) + digit;
 }
 
 -(void)updateAnswerStatusLabel:(BOOL)correct{
+    self.answerCheckLabel.alpha = 1;
     if (correct)
     {
         self.answerCheckLabel.text = @"Correct!";
@@ -82,6 +91,9 @@
         self.answerCheckLabel.text = @"Wrong!";
         self.answerCheckLabel.textColor = UIColor.redColor;
     }
+    [UIView animateWithDuration:1
+                     animations:^{self.answerCheckLabel.alpha = 0.0;}
+                     completion:^(BOOL finished){ }];
 }
 
 -(void)updateAnswerLabel{

@@ -19,4 +19,5 @@
 -(BOOL)checkAnswer:(NSInteger)answer;
 -(void)changePlayer;
 -(NSString*)getLife:(NSInteger)playerNumber;
+-(void)resetGame;
 @end

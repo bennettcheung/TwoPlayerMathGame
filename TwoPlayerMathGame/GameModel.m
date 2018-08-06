@@ -80,7 +80,11 @@
 
 -(void)resetGame{
     self.gameOver = NO;
-    _currentPlayer = 0;
+    self.currentPlayer = 0;
+    Player *player1 =self.playersArray[0];
+    player1.life = 3;
+    Player *player2 =self.playersArray[1];
+    player2.life = 3;
     [self.question generateQuestion];
 }
 
