@@ -40,23 +40,27 @@
 }
 
 - (IBAction)submitAnswer:(UIButton *)sender {
-    BOOL answerCorrect = [self.model checkAnswer:self.currentAnswer];
-    [self updateAnswerStatusLabel:answerCorrect];
-    self.player1Score.text = [self.model getLife:0];
-    self.player2Score.text = [self.model getLife:1];
-    
+    if (!self.model.gameOver){
+        
+        BOOL answerCorrect = [self.model checkAnswer:self.currentAnswer];
+        [self updateAnswerStatusLabel:answerCorrect];
+        self.player1Score.text = [self.model getLife:0];
+        self.player2Score.text = [self.model getLife:1];
+    }
+        
     
     if (self.model.gameOver)
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Game over!" message:@"Restart Game?" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             NSLog(@"You pressed button Yes");
-            [self.model resetGame];
-            self.player1Score.text = [self.model getLife:0];
-            self.player2Score.text = [self.model getLife:1];
-            self.answerLabel.text = [NSString stringWithFormat:@"%d", 0];
-            self.answerCheckLabel.text = @"";
-            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.model resetGame];
+                self.player1Score.text = [self.model getLife:0];
+                self.player2Score.text = [self.model getLife:1];
+                self.answerLabel.text = [NSString stringWithFormat:@"%d", 0];
+                self.answerCheckLabel.text = @"";
+            });           
         }];
         UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             
