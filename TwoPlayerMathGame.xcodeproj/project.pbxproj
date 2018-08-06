@@ -15,6 +15,7 @@
 		9141D4132118DEFD0065C9D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9141D4122118DEFD0065C9D3 /* main.m */; };
 		9141D41D2118DEFD0065C9D3 /* TwoPlayerMathGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9141D41C2118DEFD0065C9D3 /* TwoPlayerMathGameTests.m */; };
 		9141D4282118DEFD0065C9D3 /* TwoPlayerMathGameUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9141D4272118DEFD0065C9D3 /* TwoPlayerMathGameUITests.m */; };
+		9141D4372118E1D80065C9D3 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 9141D4362118E1D80065C9D3 /* Player.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		9141D4232118DEFD0065C9D3 /* TwoPlayerMathGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwoPlayerMathGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9141D4272118DEFD0065C9D3 /* TwoPlayerMathGameUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwoPlayerMathGameUITests.m; sourceTree = "<group>"; };
 		9141D4292118DEFD0065C9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9141D4352118E1D80065C9D3 /* Player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		9141D4362118E1D80065C9D3 /* Player.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 			children = (
 				9141D4032118DEFB0065C9D3 /* AppDelegate.h */,
 				9141D4042118DEFB0065C9D3 /* AppDelegate.m */,
+				9141D4352118E1D80065C9D3 /* Player.h */,
+				9141D4362118E1D80065C9D3 /* Player.m */,
 				9141D4062118DEFB0065C9D3 /* ViewController.h */,
 				9141D4072118DEFB0065C9D3 /* ViewController.m */,
 				9141D4092118DEFB0065C9D3 /* Main.storyboard */,
@@ -262,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9141D4372118E1D80065C9D3 /* Player.m in Sources */,
 				9141D4082118DEFB0065C9D3 /* ViewController.m in Sources */,
 				9141D4132118DEFD0065C9D3 /* main.m in Sources */,
 				9141D4052118DEFB0065C9D3 /* AppDelegate.m in Sources */,
