@@ -10,4 +10,13 @@
 
 @implementation Player
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _score = 0;
+    }
+    return self;
+}
+
 @end

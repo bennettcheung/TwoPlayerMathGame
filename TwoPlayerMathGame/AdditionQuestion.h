@@ -1,14 +1,13 @@
 //
-//  Player.h
+//  AdditionQuestion.h
 //  TwoPlayerMathGame
 //
 //  Created by Bennett on 2018-08-06.
 //  Copyright © 2018 Bennett. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "Question.h"
 
-@interface Player : NSObject
-@property (nonatomic, assign) NSInteger score;
+@interface AdditionQuestion : Question
 
 @end
